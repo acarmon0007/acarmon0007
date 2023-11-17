@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
  <meta charset="UTF-8">
@@ -18,42 +18,42 @@
   }
   
   $("#cit-majors-button").click(function() {
-   getData();
-   filterTable("CIT");
-  });
-  
-  $("#business-majors-button").click(function() {
-   getData();
-   filterTable("BUS");
+    filterTable("CIT");
+});
+
+$("#business-majors-button").click(function() {
+    filterTable("BUS");
   });
   
   function filterTable(major) {
-   $("tr").hide();
-   $("th").show();
-   $("td[data-major='"+major+"']").parent().show();
-  }
+    $("tr").hide();
+    $("td:contains('"+major+"')").parent().show();
+    $("th").show();
+}
   
  });
  </script>
  <script id="student-template" type="text/x-handlebars-template">
-  <table>
-   <thead>
-    <tr>
-     <th>Name</th>
-     <th>Major</th>
-     <th>GPA</th>
-    </tr>
-   </thead>
-   <tbody>
     {{#each this}}
     <tr>
-     <td>{{name}}</td>
-     <td data-major="{{major}}">{{major}}</td>
-     <td>{{gpa}}</td>
+        <td>{{name}}</td>
+        <td>{{major}}</td>
+        <td>{{gpa}}</td>
     </tr>
     {{/each}}
-   </tbody>
-  </table>
+</script>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Major</th>
+            <th>GPA</th>
+        </tr>
+    </thead>
+    <tbody id="student-table">
+    </tbody>
+</table>
  </script>
 </head>
 <body>
